@@ -28,13 +28,12 @@ let eventMixin = {
    *  this.trigger('select', data1, data2);
    */
   trigger(eventName, ...args) {
+    let handlers = this._eventHandlers?.[eventName];
     // 该事件名称没有对应的事件处理程序
-    if (!this._eventHandlers?.[eventName]) return;
+    if (!handlers) return;
 
     // 调用事件处理程序
-    this._eventHandlers[eventName].forEach((handler) =>
-      handler.apply(this, args)
-    );
+    handlers.forEach((handler) => handler.apply(this, args));
   },
 };
 
