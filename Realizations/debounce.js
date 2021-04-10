@@ -8,7 +8,7 @@ function debounce(func, delay) {
   let timer = null;
   return function () {
     // 判断定时器是否存在
-    timer && clearTimeout(timer);
+    if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
       func.apply(this, arguments);
     }, delay);
