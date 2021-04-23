@@ -1,6 +1,6 @@
-let reg = /#[\da-fA-F]{6}\b/g;
+// let regexp = /^((?=(?<word>\w+))\k<word>\s?)*$/;
 
-let str =
-  "color:#121212; background-color:#AA00ef bad-colors:f#fddee #fd2 #12345678";
+// console.log(regexp.test("An orignal string")); // true
 
-console.log(str.match(reg)); // #121212,#AA00ef
+let regex = /(?=(\w+))\1/;
+console.log(regex.test("string")); // true
