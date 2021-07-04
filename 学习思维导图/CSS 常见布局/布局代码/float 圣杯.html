@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>圣杯布局 - 浮动实现</title>
+    <style>
+      :root {
+        --left-width: 200px;
+        --right-width: 150px;
+        --min-width: calc(var(--left-width) * 2 + var(--right-width));
+      }
+      body {
+        /* 两倍左宽度加右宽度 */
+        min-width: var(--min-width);
+      }
+      /* 上下样式 */
+      #header,
+      #footer {
+        background: rgba(29, 27, 27, 0.726);
+        height: 60px;
+        clear: both;
+      }
+      #container {
+        padding: 0 var(--right-width) 0 var(--left-width);
+        /* 开启 BFC 防高度坍缩 */
+        overflow: hidden;
+      }
+
+      .column {
+        height: 400px;
+        float: left;
+        position: relative;
+      }
+      #center {
+        width: 100%;
+        background: aquamarine;
+      }
+      #left {
+        width: var(--left-width);
+        background: red;
+        margin-left: -100%;
+        left: calc(-1 * var(--left-width));
+      }
+      #right {
+        width: var(--right-width);
+        background: green;
+        margin-left: calc(-1 * var(--right-width));
+        right: calc(-1 * var(--right-width));
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">#header</div>
+    <div id="container">
+      <!-- 自适应放最前面 -->
+      <div id="center" class="column">#center</div>
+      <div id="left" class="column">#left</div>
+      <div id="right" class="column">#right</div>
+    </div>
+    <div id="footer">#footer</div>
+  </body>
+</html>

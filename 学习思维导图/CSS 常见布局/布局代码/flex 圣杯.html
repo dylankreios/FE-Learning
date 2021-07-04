@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>圣杯布局 - flex 实现</title>
+    <style>
+      :root {
+        --left-width: 200px;
+        --right-width: 150px;
+        --min-width: calc(var(--left-width) * 2 + var(--right-width));
+      }
+      body {
+        /* 两倍左宽度加右宽度 */
+        min-width: var(--min-width);
+      }
+      /* 上下样式 */
+      #header,
+      #footer {
+        background: rgba(29, 27, 27, 0.726);
+        height: 60px;
+      }
+      #container {
+        display: flex;
+      }
+
+      .column {
+        height: 400px;
+      }
+      #center {
+        flex: 1;
+        background: aquamarine;
+      }
+      #left {
+        width: var(--left-width);
+        background: red;
+      }
+      #right {
+        width: var(--right-width);
+        background: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">#header</div>
+    <div id="container">
+      <!-- 依次排列 -->
+      <div id="left" class="column">#left</div>
+      <div id="center" class="column">#center</div>
+      <div id="right" class="column">#right</div>
+    </div>
+    <div id="footer">#footer</div>
+  </body>
+</html>
